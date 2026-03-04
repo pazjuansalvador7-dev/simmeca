@@ -28,8 +28,8 @@ export default function App() {
   const [timeLeft, setTimeLeft] = useState(1500); // 25 minutes in seconds
 
   useEffect(() => {
-    // Check for API key on mount
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+    // Check for API key on mount safely
+    const apiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY || (window as any).process?.env?.GEMINI_API_KEY;
     if (!apiKey) {
       setError('Error: No se encontró la GEMINI_API_KEY. Si estás en Netlify, asegúrate de configurarla en las variables de entorno como VITE_GEMINI_API_KEY.');
     }

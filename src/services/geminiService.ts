@@ -2,8 +2,10 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { MECATRONICA_BANK, Question } from "../data/questions";
 
 const getApiKey = () => {
-  // Use import.meta.env (Vite standard) or process.env (AI Studio standard)
-  return import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || "";
+  // Use import.meta.env (Vite standard) or process.env (AI Studio standard) safely
+  const viteKey = (import.meta as any).env?.VITE_GEMINI_API_KEY;
+  const processKey = (window as any).process?.env?.GEMINI_API_KEY;
+  return viteKey || processKey || "";
 };
 
 const ai = new GoogleGenAI({ apiKey: getApiKey() });
