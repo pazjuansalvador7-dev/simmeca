@@ -1,0 +1,5 @@
+{
+  "name": "Generador Dinámico de Exámenes",
+  "description": "Crea exámenes personalizados de opción múltiple sobre cualquier tema usando IA.",
+  "requestFramePermissions": []
+}
